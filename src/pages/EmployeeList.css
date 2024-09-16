@@ -1,0 +1,160 @@
+/* Styles pour le conteneur principal */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Styles pour le titre */
+.container h1 {
+  font-size: 48px; 
+  color: #5a6f07; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  font-weight: bold;
+  margin-bottom: 20px; 
+  text-align: center;
+}
+
+/* Styles pour les contrôles de la table */
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles pour les contrôles */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Styles pour la barre de recherche */
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  padding: 5px;
+  border: 1px solid #5a6f07; 
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+/* Styles pour le sélecteur d'entrées */
+.entries-selector {
+  display: flex;
+  align-items: center;
+}
+
+.entries-selector label {
+  font-weight: bold;
+}
+
+.entries-select {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #5a6f07; 
+  border-radius: 5px;
+}
+
+/* Styles pour le tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #5a6f07;
+}
+
+th {
+  border-bottom: 3px solid #5a6f07; 
+  background: #93ad18; 
+  color: black; 
+}
+
+td {
+  text-align: left;
+}
+
+/* Styles pour la pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-info {
+  font-weight: bold;
+}
+
+.pagination-buttons {
+  display: flex;
+}
+
+.pagination-buttons button {
+  padding: 8px 16px;
+  margin-right: 15px;
+  border: none;
+  background-color: #5a6f07; 
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Styles pour le message "No data available" */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #5a6f07; 
+  font-style: italic;
+  font-size: 16px;
+}
+
+
+.link-container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.sort-icon {
+  font-size: 10px;
+  cursor: pointer;
+  user-select: none; 
+  line-height: 10px;
+}
+
+.sort-icon.active {
+  color: #5a6f07; 
+  font-weight: bold;
+}

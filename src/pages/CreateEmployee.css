@@ -1,0 +1,80 @@
+
+/* Styles pour le titre HRNET */
+.title {
+  font-size: 48px; 
+  color: #5a6f07; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  font-weight: bold;
+  margin-bottom: 5px; 
+}
+
+/* Styles pour le formulaire */
+.form-container {
+  background: #93ad18; 
+  padding: 16px;
+  border-radius: 5px;
+  color: black;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-fieldset {
+  border: 1px solid #5a6f07;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #5a6f07;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-button {
+  margin-top: 25px;
+  background-color: #5a6f07;
+  border: none;
+  border-radius: 15px 10px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #4b5e05;
+}
+
+/* Styles pour le conteneur du lien */
+.link {
+  margin-top: 10px;
+  text-align: left; 
+}
+
+/* Styles pour le lien */
+.form-link {
+  color: #ffffff; 
+  font-size: 16px;
+  text-decoration: none; 
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #4b5e05;
+  border: 1px solid #5a6f07;
+  display: inline-block;
+}
+
+.form-link:hover {
+  background-color: #5a6f07;
+  color: #f0f0f0; 
+}
