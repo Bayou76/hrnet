@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTable, usePagination, useGlobalFilter, useSortBy } from 'react-table';
+import { format } from 'date-fns';
 import SearchBar from './SearchBar';
 import EntriesSelector from './EntriesSelector';
 import Pagination from './Pagination';
@@ -14,13 +15,19 @@ const EmployeeTable = () => {
     setData(employees);
   }, []);
 
+  // Fonction de formatage de date
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    return format(new Date(dateStr), 'dd/MM/yyyy');
+  };
+
   const columns = React.useMemo(
     () => [
       { Header: 'First Name', accessor: 'firstName' },
       { Header: 'Last Name', accessor: 'lastName' },
-      { Header: 'Start Date', accessor: 'startDate' },
+      { Header: 'Start Date', accessor: 'startDate', Cell: ({ value }) => formatDate(value) },
       { Header: 'Department', accessor: 'department' },
-      { Header: 'Date of Birth', accessor: 'dateOfBirth' },
+      { Header: 'Date of Birth', accessor: 'dateOfBirth', Cell: ({ value }) => formatDate(value) },
       { Header: 'Street', accessor: 'street' },
       { Header: 'City', accessor: 'city' },
       { Header: 'State', accessor: 'state' },

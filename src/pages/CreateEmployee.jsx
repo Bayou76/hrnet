@@ -20,6 +20,7 @@ const CreateEmployee = () => {
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,10 +35,30 @@ const CreateEmployee = () => {
     setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.firstName) newErrors.firstName = "First Name is required.";
+    if (!formData.lastName) newErrors.lastName = "Last Name is required.";
+    if (!formData.dateOfBirth) newErrors.dateOfBirth = "Date of Birth is required.";
+    if (!formData.startDate) newErrors.startDate = "Start Date is required.";
+    if (!formData.street) newErrors.street = "Street is required.";
+    if (!formData.city) newErrors.city = "City is required.";
+    if (!formData.state) newErrors.state = "State is required.";
+    if (!formData.zipCode) newErrors.zipCode = "Zip Code is required.";
+    if (!formData.department) newErrors.department = "Department is required.";
+    return newErrors;
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     console.log("Saving data:", formData);
-    const employees = JSON.parse(localStorage.getItem("employees"));
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
     employees.push(formData);
     localStorage.setItem("employees", JSON.stringify(employees));
 
@@ -70,8 +91,9 @@ const CreateEmployee = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="form-input"
+            className={`form-input ${errors.firstName ? 'error' : ''}`}
           />
+          {errors.firstName && <div className="error-message">{errors.firstName}</div>}
 
           <label htmlFor="lastName" className="form-label">
             Last Name
@@ -82,8 +104,9 @@ const CreateEmployee = () => {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className="form-input"
+            className={`form-input ${errors.lastName ? 'error' : ''}`}
           />
+          {errors.lastName && <div className="error-message">{errors.lastName}</div>}
 
           <label htmlFor="dateOfBirth" className="form-label">
             Date of Birth
@@ -93,8 +116,9 @@ const CreateEmployee = () => {
             selectedDate={formData.dateOfBirth}
             onDateChange={(date) => handleDateChange(date, "dateOfBirth")}
             placeholder="Select Date of Birth"
-            className="form-input"
+            className={`form-input ${errors.dateOfBirth ? 'error' : ''}`}
           />
+          {errors.dateOfBirth && <div className="error-message">{errors.dateOfBirth}</div>}
 
           <label htmlFor="startDate" className="form-label">
             Start Date
@@ -104,8 +128,9 @@ const CreateEmployee = () => {
             selectedDate={formData.startDate}
             onDateChange={(date) => handleDateChange(date, "startDate")}
             placeholder="Select Start Date"
-            className="form-input"
+            className={`form-input ${errors.startDate ? 'error' : ''}`}
           />
+          {errors.startDate && <div className="error-message">{errors.startDate}</div>}
 
           <fieldset className="form-fieldset address">
             <legend>Address</legend>
@@ -119,8 +144,9 @@ const CreateEmployee = () => {
               name="street"
               value={formData.street}
               onChange={handleChange}
-              className="form-input"
+              className={`form-input ${errors.street ? 'error' : ''}`}
             />
+            {errors.street && <div className="error-message">{errors.street}</div>}
 
             <label htmlFor="city" className="form-label">
               City
@@ -131,8 +157,9 @@ const CreateEmployee = () => {
               name="city"
               value={formData.city}
               onChange={handleChange}
-              className="form-input"
+              className={`form-input ${errors.city ? 'error' : ''}`}
             />
+            {errors.city && <div className="error-message">{errors.city}</div>}
 
             <Dropdown
               label="State"
@@ -143,7 +170,9 @@ const CreateEmployee = () => {
               ]}
               value={formData.state}
               onChange={(e) => handleDropdownChange(e, "state")}
+              className={`form-input ${errors.state ? 'error' : ''}`}
             />
+            {errors.state && <div className="error-message">{errors.state}</div>}
 
             <label htmlFor="zipCode" className="form-label">
               Zip Code
@@ -154,8 +183,9 @@ const CreateEmployee = () => {
               name="zipCode"
               value={formData.zipCode}
               onChange={handleChange}
-              className="form-input"
+              className={`form-input ${errors.zipCode ? 'error' : ''}`}
             />
+            {errors.zipCode && <div className="error-message">{errors.zipCode}</div>}
           </fieldset>
 
           <label htmlFor="department" className="form-label">
@@ -172,7 +202,9 @@ const CreateEmployee = () => {
             ]}
             value={formData.department}
             onChange={(e) => handleDropdownChange(e, "department")}
+            className={`form-input ${errors.department ? 'error' : ''}`}
           />
+          {errors.department && <div className="error-message">{errors.department}</div>}
 
           <button type="submit" className="form-button">
             Save
